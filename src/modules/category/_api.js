@@ -143,7 +143,7 @@ const categoryRouter = Router();
 
 categoryRouter.get("/admin/getAllCategory", GetAllCategory);
 categoryRouter.get("/admin/getCategoryBy/:uuid", GetCategoryById);
-categoryRouter.post("/admin/createCategory", upload.single("file"), AddCategory);
+categoryRouter.post("/admin/createCategory", upload.single("categoryImage"), AddCategory);
 categoryRouter.put("/admin/updateCategory/:uuid", upload.single("categoryImage"), UpdateCategory);
 categoryRouter.delete("/admin/deleteAllCategory", DeleteAllCategory);
 categoryRouter.delete("/admin/deleteCategoryBy/:uuid", DeleteCategoryById)
