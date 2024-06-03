@@ -41,7 +41,7 @@ const getAllCategories = async () => {
     const data = getData.map(category => ({
         uuid: category.uuid,
         categoryName: category.categoryName,
-        categoryImage: `https://furniture-imoe.onrender.com/uploads/${category.categoryImage}`,
+        categoryImage: `https://furniture-imoe.onrender.com/upload/${category.categoryImage}`,
         productCount: category.Products.length
     }));
 
@@ -61,7 +61,7 @@ const getCategoryById = async (uuid) => {
     const result = {
         uuid: dataById.uuid,
         categoryName: dataById.categoryName,
-        categoryImage: `https://furniture-imoe.onrender.com/uploads/${dataById.categoryImage}`, 
+        categoryImage: `https://furniture-imoe.onrender.com/upload/${dataById.categoryImage}`, 
         products: dataById.Products
     };
 

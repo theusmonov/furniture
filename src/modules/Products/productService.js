@@ -78,7 +78,7 @@ const getAllProducts = async () => {
 
   const products = data.map((product) => ({
     ...product.dataValues,
-    img: `https://furniture-imoe.onrender.com/uploads/${product.img}`,
+    img: `https://furniture-imoe.onrender.com/upload/${product.img}`,
   }));
 
   return products;
@@ -92,7 +92,7 @@ const getProductById = async (uuid) => {
 
   const product = {
     ...data.dataValues,
-    img: `https://furniture-imoe.onrender.com/uploads/${data.img}`,
+    img: `https://furniture-imoe.onrender.com/upload/${data.img}`,
   };
 
   return product;

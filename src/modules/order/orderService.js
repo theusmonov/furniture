@@ -84,7 +84,7 @@ export const getAllOrders = async () => {
         ...orderItem.dataValues,
         product: {
             ...orderItem.product.dataValues,
-            img: `$https://furniture-imoe.onrender.com/uploads/${orderItem.product.img}`
+            img: `$https://furniture-imoe.onrender.com/upload/${orderItem.product.img}`
         }
     }));
 
