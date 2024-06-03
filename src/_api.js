@@ -28,7 +28,7 @@ const options = {
       },
       servers: [
         {
-          url: 'https://furniture-imoe.onrender.com/',
+          url: 'https://furniture-imoe.onrender.com',
         },
       ],
     },
