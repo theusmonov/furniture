@@ -70,28 +70,33 @@ const createProduct = async (data, req) => {
   return product;
 };
 
+const getAllProducts = async () => {
+  const data = await Product.findAll();
+  if (!data) {
+    throw new NotFoundError("All products not found");
+  }
 
+  const products = data.map((product) => ({
+    ...product.dataValues,
+    img: `https://furniture-imoe.onrender.com/uploads/${product.img}`,
+  }));
 
-const getAllProducts = async() => {
-    const data = await Product.findAll();
-    if(!data) {
-        throw new NotFoundError("All products not found");
-    }
+  return products;
+};
 
-    return data;
-}
+const getProductById = async (uuid) => {
+  const data = await Product.findByPk(uuid);
+  if (!data) {
+    throw new NotFoundError(`Product with id ${uuid} not found`);
+  }
 
+  const product = {
+    ...data.dataValues,
+    img: `https://furniture-imoe.onrender.com/uploads/${data.img}`,
+  };
 
-const getProductById = async(uuid) => {
-    const data = await Product.findByPk(uuid);
-    if(!data) {
-        throw new NotFoundError(`Product with id ${uuid} not found`);
-    }
-    return data;
-}
-
-
-
+  return product;
+};
 
 const deleteAllProduct = async (data) => {
   const delProd = await Product.findAll();
@@ -147,4 +152,11 @@ const updateProductBy = async (uuid, data, req) => {
   return { message: `Product with ID ${uuid} updated successfully` };
 };
 
-export { createProduct, deleteAllProduct, deleteProductById, updateProductBy, getAllProducts, getProductById};
+export {
+  createProduct,
+  deleteAllProduct,
+  deleteProductById,
+  updateProductBy,
+  getAllProducts,
+  getProductById,
+};

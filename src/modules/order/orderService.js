@@ -80,5 +80,13 @@ export const getAllOrders = async () => {
         throw new NotFoundError("No orders found");
     }
 
-    return orderItems;
+    const orders = orderItems.map(orderItem => ({
+        ...orderItem.dataValues,
+        product: {
+            ...orderItem.product.dataValues,
+            img: `$https://furniture-imoe.onrender.com/uploads/${orderItem.product.img}`
+        }
+    }));
+
+    return orders;
 };
