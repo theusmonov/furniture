@@ -2,15 +2,6 @@ import Joi from "joi";
 
 
 export const registerUsersSchema = Joi.object({
-    fullName: Joi.string()
-        .min(3)
-        .max(35)
-        .required()
-        .messages({
-            "string.min": "The fullName field must not have less than 3 characters",
-            "string.max": "The fullName field should not contain more than 35 characters",
-            "any.required": "The fullName field is required"
-        }),
     email: Joi.string()
         .email({tlds: {allow: ["com"]}})
         .pattern(/^[a-za-z0-9._%+-]+@gmail\.com$/)
@@ -20,32 +11,12 @@ export const registerUsersSchema = Joi.object({
             "string.pattern.base": "The email field must contain lowercase letters and a Gmail address ending with @gmail.com",
             "any.required": "The email field is required"
         }),
-    password: Joi.string()
-        .min(8)
-        .max(8)
-        .pattern(new RegExp('^[0-9]{8}$'))
-        .required()
-        .messages({
-            "string.min": "The password field must be at least 8 characters long",
-            "string.max": "The password field must not be longer than 8 characters",
-            "string.pattern.base": "Password must be 8 digits only",
-            "any.required": "The password field is required"
-        }),
     phoneNumber: Joi.string()
         .pattern(/^\+998\d{2}\d{3}\d{2}\d{2}$/)
         .required()
         .messages({
             "string.pattern.base": "The phone number must be in the format +998XXXXXXXXX",
             "any.required": "The phone number field is required"
-        }),
-    address: Joi.string()
-        .min(2)
-        .max(50)
-        .required()
-        .messages({
-            "string.min": "The address field must have at least 2 characters",
-            "string.max": "The address field should not exceed 50 characters",
-            "any.required": "The address field is required"
         }),
 })
 

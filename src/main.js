@@ -6,7 +6,6 @@ import ErrorHandle from './shared/errors/errorStatus.js';
 import mainRouter, { swaggerSpec } from './_api.js';
 import cookieParser from 'cookie-parser';
 import { modelSync, relation } from './utils/relation.js';
-import swaggerui from 'swagger-ui-express';
 
 const app = express();
 
@@ -29,8 +28,6 @@ const startAppServer = async () => {
     console.log('Database ga ulanishda xatolik', err);
   }
  
-  app.use('/api-docs', swaggerui.serve, swaggerui.setup(swaggerSpec));
-
   app.listen(config.port, () => {
     console.log(`Server running on port http://localhost:${config.port}`);
   });

@@ -6,6 +6,7 @@ import userAddCommetRouter from "./modules/commets/_api.js";
 import orderRouter from "./modules/order/_api.js";
 import swaggerJSDoc from "swagger-jsdoc"
 import adminRouter from "./modules/user/_api.js";
+import swaggerui from 'swagger-ui-express';
 
 const mainRouter = Router();
 
@@ -38,6 +39,6 @@ const options = {
   
 export const swaggerSpec = swaggerJSDoc(options);
 
-
+mainRouter.use('/api-docs', swaggerui.serve, swaggerui.setup(swaggerSpec));
 
 export default mainRouter;
