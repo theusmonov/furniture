@@ -14,6 +14,19 @@ const getAdmin = async () => {
     return data;
 }
 
+
+const getUsers = async () => {
+    const data = Users.findAll({where: {
+        role: "user"
+    }})
+
+    if(!data){
+        throw new NotFoundError("Not found users")
+    }
+
+    return data;
+}
+
 const deleteAdminById = async (uuid) => {
 
     const data = Users.findByPk(uuid);
@@ -25,4 +38,4 @@ const deleteAdminById = async (uuid) => {
 }
 
 
-export {getAdmin, deleteAdminById}
+export {getAdmin, deleteAdminById, getUsers}

@@ -1,4 +1,4 @@
-import { deleteAdminById, getAdmin } from "./userService.js";
+import { deleteAdminById, getAdmin, getUsers } from "./userService.js";
 
 
 
@@ -10,6 +10,19 @@ export const GetAdminUsers = async (req, res, next) => {
         next(error)
     }
 };
+
+
+export const GetUsersAll = async (req, res, next) => {
+    try {
+        const users = await getUsers();
+        res.status(200).json(users);
+    } catch (error) {
+        next(error)
+    }
+};
+
+
+
 
 
 

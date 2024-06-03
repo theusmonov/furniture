@@ -1,10 +1,14 @@
 import { Router } from "express";
-import { DeleteAdminById, GetAdminUsers } from "./_controller.js";
+import { DeleteAdminById, GetAdminUsers, GetUsersAll } from "./_controller.js";
 
 
 const adminRouter = Router();
+const userRouter = Router();
 
 adminRouter.get("/allAdmins", GetAdminUsers);
-adminRouter.delete("/adminDelete", DeleteAdminById)
+userRouter.get("/allUsers", GetUsersAll)
+adminRouter.delete("/adminDelete", DeleteAdminById);
+
+
 
 export default adminRouter;
