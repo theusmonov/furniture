@@ -3,7 +3,9 @@ import { NotFoundError } from "../../shared/errors/classes.js"
 
 
 const getAdmin = async () => {
-    const data = Users.findAll({role: "admin"})
+    const data = Users.findAll({where: {
+        role: "admin"
+    }})
 
     if(!data){
         throw new NotFoundError("Not found admins")
