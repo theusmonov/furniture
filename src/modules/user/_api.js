@@ -11,4 +11,4 @@ adminRouter.delete("/adminDelete", DeleteAdminById);
 
 
 
-export default adminRouter;
+export {adminRouter, userRouter};

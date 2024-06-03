@@ -5,8 +5,8 @@ import productRouter from "./modules/Products/_api.js";
 import userAddCommetRouter from "./modules/commets/_api.js";
 import orderRouter from "./modules/order/_api.js";
 import swaggerJSDoc from "swagger-jsdoc"
-import adminRouter from "./modules/user/_api.js";
 import swaggerui from 'swagger-ui-express';
+import { adminRouter, userRouter } from "./modules/user/_api.js";
 
 const mainRouter = Router();
 
@@ -16,6 +16,7 @@ mainRouter.use("/", productRouter);
 mainRouter.use("/", userAddCommetRouter);
 mainRouter.use("/", orderRouter);
 mainRouter.use("/", adminRouter)
+mainRouter.use("/", userRouter)
 
 
 
