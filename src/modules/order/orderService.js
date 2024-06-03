@@ -76,17 +76,14 @@ export const getAllOrders = async () => {
         ],
     });
 
-    if (!orderItems || orderItems.length === 0) {
-        throw new NotFoundError("No orders found");
-    }
 
-    const orders = orderItems.map(orderItem => ({
-        ...orderItem.dataValues,
-        product: {
+    const ordersWithImages = orderItems.map(orderItem => ({
+        ...orderItem.toJSON(),
+        product: orderItem.product ? {
             ...orderItem.product.dataValues,
-            img: `$https://furniture-imoe.onrender.com/upload/${orderItem.product.img}`
-        }
+            img: orderItem.product.img ? `http://localhost:7090/${orderItem.product.img}` : null
+        } : null,
     }));
 
-    return orders;
+    return ordersWithImages; 
 };

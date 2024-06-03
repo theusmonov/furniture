@@ -30,7 +30,7 @@ const options = {
       },
       servers: [
         {
-          url: 'https://furniture-imoe.onrender.com',
+          url: 'http://localhost:7090',
         },
       ],
     },

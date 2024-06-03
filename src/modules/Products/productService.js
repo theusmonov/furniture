@@ -52,7 +52,7 @@ const createProduct = async (data, req) => {
 
   const product = await Product.create({
     category_id,
-    img: filename ? `img/${filename}` : "",
+    img: filename ? `${filename}` : "",
     name,
     discount_price,
     current_price,
@@ -70,33 +70,39 @@ const createProduct = async (data, req) => {
   return product;
 };
 
-const getAllProducts = async () => {
-  const data = await Product.findAll();
-  if (!data) {
-    throw new NotFoundError("All products not found");
-  }
 
-  const products = data.map((product) => ({
-    ...product.dataValues,
-    img: `https://furniture-imoe.onrender.com/upload/${product.img}`,
+
+const getAllProducts = async() => {
+    const data = await Product.findAll();
+    if(!data) {
+        throw new NotFoundError("All products not found");
+    }
+
+    const productsWithImages = data.map(product => ({
+      ...product.toJSON(),
+      img: `http://localhost:7090/${product.img}` 
   }));
 
-  return products;
-};
+  return productsWithImages;
+}
 
-const getProductById = async (uuid) => {
-  const data = await Product.findByPk(uuid);
-  if (!data) {
-    throw new NotFoundError(`Product with id ${uuid} not found`);
-  }
 
-  const product = {
-    ...data.dataValues,
-    img: `https://furniture-imoe.onrender.com/upload/${data.img}`,
+const getProductById = async(uuid) => {
+    const data = await Product.findByPk(uuid);
+    if(!data) {
+        throw new NotFoundError(`Product with id ${uuid} not found`);
+    }
+    
+    const productWithImage = {
+      ...data.toJSON(),
+      img: `http://localhost:7090/${data.img}` 
   };
 
-  return product;
-};
+  return productWithImage;
+}
+
+
+
 
 const deleteAllProduct = async (data) => {
   const delProd = await Product.findAll();
@@ -152,11 +158,4 @@ const updateProductBy = async (uuid, data, req) => {
   return { message: `Product with ID ${uuid} updated successfully` };
 };
 
-export {
-  createProduct,
-  deleteAllProduct,
-  deleteProductById,
-  updateProductBy,
-  getAllProducts,
-  getProductById,
-};
+export { createProduct, deleteAllProduct, deleteProductById, updateProductBy, getAllProducts, getProductById};

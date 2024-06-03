@@ -22,7 +22,7 @@ const createCategory = async (req, data) => {
 
     const newData = await Category.create({
         categoryName,
-        categoryImage: `img/${filename}`,
+        categoryImage: `${filename}`,
     });
 
     return newData;
@@ -41,9 +41,11 @@ const getAllCategories = async () => {
     const data = getData.map(category => ({
         uuid: category.uuid,
         categoryName: category.categoryName,
-        categoryImage: `https://furniture-imoe.onrender.com/upload/${category.categoryImage}`,
+        categoryImage: `http://localhost:7090/${category.categoryImage}`,
         productCount: category.Products.length
     }));
+
+    console.log(data.categoryImage)
 
     return data;
 }
@@ -58,14 +60,9 @@ const getCategoryById = async (uuid) => {
         throw new NotFoundError(`Category with id ${uuid} not found`);
     }
 
-    const result = {
-        uuid: dataById.uuid,
-        categoryName: dataById.categoryName,
-        categoryImage: `https://furniture-imoe.onrender.com/upload/${dataById.categoryImage}`, 
-        products: dataById.Products
-    };
+    dataById.categoryImage = `http://localhost:7090/${dataById.categoryImage}`
 
-    return result;
+    return dataById;
 }
 
 

@@ -1,6 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
-
+import "dotenv/config.js"
 
 const config = {
     port : +process.env.APP_PORT || 5678,
