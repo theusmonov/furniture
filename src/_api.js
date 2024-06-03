@@ -5,6 +5,7 @@ import productRouter from "./modules/Products/_api.js";
 import userAddCommetRouter from "./modules/commets/_api.js";
 import orderRouter from "./modules/order/_api.js";
 import swaggerJSDoc from "swagger-jsdoc"
+import adminRoute from "./modules/user/_api.js";
 
 const mainRouter = Router();
 
@@ -13,6 +14,7 @@ mainRouter.use("/", categoryRouter);
 mainRouter.use("/", productRouter);
 mainRouter.use("/", userAddCommetRouter);
 mainRouter.use("/", orderRouter);
+mainRouter.use("/", adminRoute)
 
 
 
@@ -26,7 +28,7 @@ const options = {
       },
       servers: [
         {
-          url: 'http://localhost:7090',
+          url: 'https://furniture-imoe.onrender.com',
         },
       ],
     },
